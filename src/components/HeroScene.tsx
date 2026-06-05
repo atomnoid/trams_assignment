@@ -7,10 +7,11 @@ export default function HeroScene() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!containerRef.current) return
+    const container = containerRef.current
+    if (!container) return
 
-    const width = containerRef.current.clientWidth
-    const height = containerRef.current.clientHeight
+    const width = container.clientWidth
+    const height = container.clientHeight
 
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100)
@@ -20,7 +21,7 @@ export default function HeroScene() {
     renderer.setSize(width, height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     renderer.setClearColor(0x000000, 0)
-    containerRef.current.appendChild(renderer.domElement)
+    container.appendChild(renderer.domElement)
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.55)
     scene.add(ambientLight)
@@ -94,9 +95,9 @@ export default function HeroScene() {
     animate()
 
     const handleResize = () => {
-      if (!containerRef.current) return
-      const newWidth = containerRef.current.clientWidth
-      const newHeight = containerRef.current.clientHeight
+      if (!container) return
+      const newWidth = container.clientWidth
+      const newHeight = container.clientHeight
       camera.aspect = newWidth / newHeight
       camera.updateProjectionMatrix()
       renderer.setSize(newWidth, newHeight)
@@ -106,7 +107,7 @@ export default function HeroScene() {
     return () => {
       window.cancelAnimationFrame(frameId)
       window.removeEventListener('resize', handleResize)
-      containerRef.current?.removeChild(renderer.domElement)
+      container?.removeChild(renderer.domElement)
       blobGeo.dispose()
       blobMat.dispose()
       particleGroup.children.forEach((child) => {
