@@ -49,7 +49,7 @@ export default function TestimonialsSection() {
             What our customer <br /> says about us
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Don't just take our word for it - hear from our satisfied clients
+            Don&apos;t just take our word for it - hear from our satisfied clients
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export default function TestimonialsSection() {
 
               {/* Quote */}
               <p className="text-gray-700 mb-6 leading-relaxed italic group-hover:text-gray-900 transition-colors">
-                "{testimonial.content}"
+                &ldquo;{testimonial.content}&rdquo;
               </p>
 
               {/* Author */}
